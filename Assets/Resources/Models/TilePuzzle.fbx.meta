@@ -1,0 +1,221 @@
+fileFormatVersion: 2
+guid: 8e7d777d99a064fea82c7d6dd11bc65c
+timeCreated: 1490968036
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Doorway
+    100002: Ground.000
+    100004: Ground.001
+    100006: Platform.000
+    100008: Platform.001
+    100010: Platform.002
+    100012: Platform.003
+    100014: Platform.004
+    100016: Platform.005
+    100018: Platform.006
+    100020: Platform.007
+    100022: Platform.008
+    100024: Platform.009
+    100026: Platform.010
+    100028: Platform.011
+    100030: Platform.012
+    100032: Platform.013
+    100034: Platform.014
+    100036: Platform.015
+    100038: Symbol01
+    100040: Symbol01.001
+    100042: Symbol02
+    100044: Symbol02.001
+    100046: //RootNode
+    100048: Walls
+    400000: Doorway
+    400002: Ground.000
+    400004: Ground.001
+    400006: Platform.000
+    400008: Platform.001
+    400010: Platform.002
+    400012: Platform.003
+    400014: Platform.004
+    400016: Platform.005
+    400018: Platform.006
+    400020: Platform.007
+    400022: Platform.008
+    400024: Platform.009
+    400026: Platform.010
+    400028: Platform.011
+    400030: Platform.012
+    400032: Platform.013
+    400034: Platform.014
+    400036: Platform.015
+    400038: Symbol01
+    400040: Symbol01.001
+    400042: Symbol02
+    400044: Symbol02.001
+    400046: //RootNode
+    400048: Walls
+    2300000: Doorway
+    2300002: Ground.000
+    2300004: Ground.001
+    2300006: Platform.000
+    2300008: Platform.001
+    2300010: Platform.002
+    2300012: Platform.003
+    2300014: Platform.004
+    2300016: Platform.005
+    2300018: Platform.006
+    2300020: Platform.007
+    2300022: Platform.008
+    2300024: Platform.009
+    2300026: Platform.010
+    2300028: Platform.011
+    2300030: Platform.012
+    2300032: Platform.013
+    2300034: Platform.014
+    2300036: Platform.015
+    2300038: Symbol01
+    2300040: Symbol01.001
+    2300042: Symbol02
+    2300044: Symbol02.001
+    2300046: Walls
+    3300000: Doorway
+    3300002: Ground.000
+    3300004: Ground.001
+    3300006: Platform.000
+    3300008: Platform.001
+    3300010: Platform.002
+    3300012: Platform.003
+    3300014: Platform.004
+    3300016: Platform.005
+    3300018: Platform.006
+    3300020: Platform.007
+    3300022: Platform.008
+    3300024: Platform.009
+    3300026: Platform.010
+    3300028: Platform.011
+    3300030: Platform.012
+    3300032: Platform.013
+    3300034: Platform.014
+    3300036: Platform.015
+    3300038: Symbol01
+    3300040: Symbol01.001
+    3300042: Symbol02
+    3300044: Symbol02.001
+    3300046: Walls
+    4300000: Ground.001
+    4300002: Walls
+    4300004: Symbol01.001
+    4300006: Platform.015
+    4300008: Platform.014
+    4300010: Platform.013
+    4300012: Platform.012
+    4300014: Symbol02.001
+    4300016: Platform.011
+    4300018: Platform.010
+    4300020: Platform.009
+    4300022: Platform.008
+    4300024: Platform.007
+    4300026: Platform.006
+    4300028: Platform.005
+    4300030: Platform.004
+    4300032: Platform.003
+    4300034: Platform.002
+    4300036: Platform.001
+    4300038: Platform.000
+    4300040: Symbol02
+    4300042: Symbol01
+    4300044: Ground.000
+    4300046: Doorway
+    6400000: Doorway
+    6400002: Ground.000
+    6400004: Ground.001
+    6400006: Platform.000
+    6400008: Platform.001
+    6400010: Platform.002
+    6400012: Platform.003
+    6400014: Platform.004
+    6400016: Platform.005
+    6400018: Platform.006
+    6400020: Platform.007
+    6400022: Platform.008
+    6400024: Platform.009
+    6400026: Platform.010
+    6400028: Platform.011
+    6400030: Platform.012
+    6400032: Platform.013
+    6400034: Platform.014
+    6400036: Platform.015
+    6400038: Symbol01
+    6400040: Symbol01.001
+    6400042: Symbol02
+    6400044: Symbol02.001
+    6400046: Walls
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 1
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
