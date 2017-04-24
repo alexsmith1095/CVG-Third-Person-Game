@@ -9,14 +9,14 @@ public class OnScreenPrompt : MonoBehaviour {
 		PlayerEvents.displayPrompt += SetPromptText;
 	}
 
-	void SetPromptText(string text) {
+	void SetPromptText(string text, int duration) {
 		GetComponent<Text>().text = text;
-		StartCoroutine("ShowPrompt");
+		StartCoroutine(ShowPrompt(text, duration));
     }
 
-	IEnumerator ShowPrompt() {
+	IEnumerator ShowPrompt(string text, int duration) {
 		GetComponent<Text>().enabled = true;
-		yield return new WaitForSeconds(5);
+		yield return new WaitForSeconds(duration);
         GetComponent<Text>().enabled = false;
 	}
 }

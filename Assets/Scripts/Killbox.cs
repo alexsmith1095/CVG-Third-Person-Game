@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Killbox : MonoBehaviour {
 
-	void OnTriggerEnter(Collider col) {
-		if(col.GetComponent<Collider>().gameObject.tag == "Player") {
-            PlayerEvents.PlayerDamaged(col.gameObject, 5);
+    private new GameObject camera;
+
+	void Start () {
+        camera = Camera.main.gameObject;
+	}
+
+	void OnTriggerEnter (Collider col) {
+		if(col.tag == "Player") {
+            camera.GetComponent<ThirdPersonCamera>().StartCoroutine("OnFall");
 		}
 	}
 }

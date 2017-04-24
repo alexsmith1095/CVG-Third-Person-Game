@@ -6,7 +6,7 @@ public class ReverseGravity : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col) {
 		if(col.GetComponent<Collider>().gameObject.tag == "Player") {
-            PlayerEvents.GravityToggled(); // Fire the toggle gravity event if collider is player
+			PlayerEvents.GravityToggled(); // Fire the toggle gravity event if collider is player
 		}
     }
 

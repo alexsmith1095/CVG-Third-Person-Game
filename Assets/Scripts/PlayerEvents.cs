@@ -7,7 +7,7 @@ public class PlayerEvents : MonoBehaviour {
     public delegate void DamageHandler(GameObject player, int amount);
     public delegate void GravityHandler();
     public delegate void PickupHandler(GameObject pickup);
-    public delegate void PromptHandler(string text);
+    public delegate void PromptHandler(string text, int duration);
 
     public static event DamageHandler playerDamaged;
     public static event DamageHandler playerDead;
@@ -35,8 +35,8 @@ public class PlayerEvents : MonoBehaviour {
             pickedUpObject(pickup);
     }
 
-    public static void DisplayPrompt(string text) {
+    public static void DisplayPrompt(string text, int duration) {
         if(displayPrompt != null)
-            displayPrompt(text);
+            displayPrompt(text, duration);
     }
 }

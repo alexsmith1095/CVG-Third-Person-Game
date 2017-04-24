@@ -7,10 +7,23 @@ using XboxCtrlrInput;
 
 public class MenuFunctions : MonoBehaviour {
 
+    public GameObject buttonsPanel;
+    public GameObject controlsPanel;
+
+	void Start () {
+        controlsPanel.SetActive(false);
+        buttonsPanel.SetActive(true);
+	}
+
 	void Update() {
 		if(XCI.GetButtonDown(XboxButton.A)) {
 			ExecuteEvents.Execute(EventSystem.current.currentSelectedGameObject, null, ExecuteEvents.submitHandler);
-		}
+        }
+
+		if (controlsPanel.activeInHierarchy && XCI.GetButtonDown(XboxButton.A) ||
+			controlsPanel.activeInHierarchy && Input.GetKeyDown(KeyCode.Return)) {
+				ShowButtons();
+			}
 	}
 
 	public void HoverSound() {
@@ -27,6 +40,16 @@ public class MenuFunctions : MonoBehaviour {
 
 	public void Scene(int index){
 		SceneManager.LoadScene(index);
+    }
+
+	public void ShowControls () {
+        controlsPanel.SetActive(true);
+		buttonsPanel.SetActive(false);
+	}
+
+	public void ShowButtons () {
+		buttonsPanel.SetActive(true);
+		controlsPanel.SetActive(false);
 	}
 
 	public void Quit()
@@ -37,4 +60,5 @@ public class MenuFunctions : MonoBehaviour {
         	Application.Quit ();
 		#endif
     }
+
 }

@@ -14,7 +14,6 @@ public class OrbFollowState : IState {
 	//executed upon entry of the state
     public void Enter()
     {
-        Debug.Log("Orb Entered Follow state");
 		// Code for animator > walk here
 
 		agent = owner.GetComponent<UnityEngine.AI.NavMeshAgent>();
