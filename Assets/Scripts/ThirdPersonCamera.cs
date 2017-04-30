@@ -10,12 +10,12 @@ public class ThirdPersonCamera : MonoBehaviour {
     private float maxDistance = 6f;
     private float x = 0.0f;
     private float y = 0.0f;
-    private float xSpeed = 80f;
-    private float ySpeed = 100f;
+    private float xSpeed = 30f;
+    private float ySpeed = 45f;
     private bool playingIntro;
 
 	void Start () {
-        Cursor.lockState = CursorLockMode.Locked; // Hide the cursor
+        //Cursor.lockState = CursorLockMode.Locked; // Hide the cursor
         target = GameObject.FindGameObjectWithTag("Player").transform;
         fallingTarget = GameObject.FindGameObjectWithTag("Player").transform;
         Vector3 angles = transform.eulerAngles;

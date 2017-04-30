@@ -20,7 +20,7 @@ public class MenuFunctions : MonoBehaviour {
 			ExecuteEvents.Execute(EventSystem.current.currentSelectedGameObject, null, ExecuteEvents.submitHandler);
         }
 
-		if (controlsPanel.activeInHierarchy && XCI.GetButtonDown(XboxButton.A) ||
+		if (controlsPanel.activeInHierarchy && XCI.GetButtonDown(XboxButton.B) ||
 			controlsPanel.activeInHierarchy && Input.GetKeyDown(KeyCode.Return)) {
 				ShowButtons();
 			}
@@ -39,7 +39,7 @@ public class MenuFunctions : MonoBehaviour {
     }
 
 	public void Scene(int index){
-		SceneManager.LoadScene(index);
+		SceneManager.LoadScene(index, LoadSceneMode.Single);
     }
 
 	public void ShowControls () {

@@ -9,7 +9,7 @@ public class Pause : MonoBehaviour {
     private bool playingIntro;
 
 	void Start() {
-		pausePanel = GameObject.Find("PausePanel");
+        pausePanel = GameObject.Find("PausePanel");
         pausePanel.SetActive(false);
         StartCoroutine("Intro");
     }
@@ -23,6 +23,7 @@ public class Pause : MonoBehaviour {
     				ResumeGame();
                 }
             }
+
             if (XCI.GetButtonDown(XboxButton.B)) {
                 if (pausePanel.activeInHierarchy)
     				ResumeGame();
@@ -31,21 +32,29 @@ public class Pause : MonoBehaviour {
     }
 
     public void PauseGame() {
-		Time.timeScale = 0;
-		pausePanel.SetActive(true);
+        Time.timeScale = 0;
+        pausePanel.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().enabled = false;
         Camera.main.gameObject.GetComponent<ThirdPersonCamera>().enabled = false;
+        if (XCI.GetNumPluggedCtrlrs() <= 0) {
+            Cursor.lockState = CursorLockMode.None; // Unlock the cursor
+            Cursor.visible = true; // Show the cursor
+        }
     }
 
     public void ResumeGame() {
-		Time.timeScale = 1;
-		pausePanel.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
+        Cursor.visible = false; // Hide the cursor
+        pausePanel.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().enabled = true;
         Camera.main.gameObject.GetComponent<ThirdPersonCamera>().enabled = true;
     }
 
     IEnumerator Intro () {
         playingIntro = true;
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
+        Cursor.visible = false; // Hide the cursor
         yield return new WaitForSeconds (5);
         playingIntro = false;
     }

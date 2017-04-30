@@ -38,7 +38,7 @@ public class RotatingPuzzle : MonoBehaviour {
 	void OnTriggerEnter() {
         hasPlayer = true; // Player is inside trigger
 		if(XCI.GetNumPluggedCtrlrs() > 0)
-			PlayerEvents.DisplayPrompt("Press X to Rotate", 100);
+			PlayerEvents.DisplayPrompt("Press Y to Rotate", 100);
 		else
 			PlayerEvents.DisplayPrompt("Press E to Rotate", 100);
 	}
@@ -52,7 +52,7 @@ public class RotatingPuzzle : MonoBehaviour {
 	///	Handle the user input and rotation of the object.
 	/// </summary>
 	private void Rotation () {
-		if (hasPlayer && (Input.GetKeyDown(KeyCode.E) || XCI.GetButtonDown(XboxButton.X))) {
+		if (hasPlayer && (Input.GetKeyDown(KeyCode.E) || XCI.GetButtonDown(XboxButton.Y))) {
 			targetRotation.z = Increment(targetRotation.z);
 			// Check for solution
 			if(targetRotation.z == (float)solution) {

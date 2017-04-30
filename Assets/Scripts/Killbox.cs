@@ -13,6 +13,7 @@ public class Killbox : MonoBehaviour {
 	void OnTriggerEnter (Collider col) {
 		if(col.tag == "Player") {
             camera.GetComponent<ThirdPersonCamera>().StartCoroutine("OnFall");
+            GameManager.deathCount += 1; 
 		}
 	}
 }

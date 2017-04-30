@@ -7,39 +7,40 @@ using XboxCtrlrInput;
 
 public class PickupNote : MonoBehaviour {
 
-	void Awake() {
-		GetComponent<MeshRenderer>().enabled = false; // Ensure the text is hidden on load
-    }
+	public GameObject noteUI;
 
 	void Start () {
-		if (XCI.GetNumPluggedCtrlrs() > 0)
-            GetComponent<TextMesh>().text = "Press X to pick up";
-        else
-			GetComponent<TextMesh>().text = "Press E to pick up";
+		GetComponent<MeshRenderer>().enabled = false; // Ensure the text is hidden on load
+		noteUI.SetActive(false);
     }
 
 	void FixedUpdate () {
-        transform.LookAt(Camera.main.transform);
+		// Text always faces the player camera
+		transform.LookAt(Camera.main.transform);
         transform.Rotate(0, 180, 0);
+    }
+
+	void OnTriggerEnter () {
+		if (XCI.GetNumPluggedCtrlrs() > 0)
+            GetComponent<TextMesh>().text = "Press Y to pick up";
+        else
+			GetComponent<TextMesh>().text = "Press E to pick up";
 	}
 
 	void OnTriggerStay(Collider col) {
-		if (XCI.GetNumPluggedCtrlrs() > 0) {
-			GetComponent<TextMesh>().text = "Press X to pick up";
-		} else {
-			GetComponent<TextMesh>().text = "Press E to pick up";
-		}
-
 		if(col.gameObject.tag == "Player") {
 			GetComponent<MeshRenderer>().enabled = true;
-			if(XCI.GetButtonDown(XboxButton.X)) {
-                PlayerEvents.PickedUpObject(transform.parent.gameObject);
-                PlayerEvents.DisplayPrompt("Press Up on D-Pad to read Note", 8);
-				Destroy(transform.parent.gameObject);
-	        } else if (Input.GetKeyDown(KeyCode.E)) {
-                PlayerEvents.PickedUpObject(transform.parent.gameObject);
-        		PlayerEvents.DisplayPrompt("Press N to read Note", 8);
-				Destroy(transform.parent.gameObject);
+
+			if (Input.GetKeyDown(KeyCode.E) || XCI.GetButtonDown(XboxButton.Y)) {
+                // PlayerEvents.PickedUpObject(transform.parent.gameObject);
+				transform.parent.gameObject.SetActive(false);
+				noteUI.SetActive(true);
+
+				if (XCI.GetNumPluggedCtrlrs() > 0) {
+					PlayerEvents.DisplayPrompt("Press Up on D-Pad to read Note", 8);
+				} else {
+					PlayerEvents.DisplayPrompt("Press N to read Note", 8);
+				}
 			}
 		}
     }

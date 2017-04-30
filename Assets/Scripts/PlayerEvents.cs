@@ -12,7 +12,6 @@ public class PlayerEvents : MonoBehaviour {
     public static event DamageHandler playerDamaged;
     public static event DamageHandler playerDead;
     public static event GravityHandler gravityToggled;
-    public static event PickupHandler pickedUpObject;
     public static event PromptHandler displayPrompt;
 
     public static void PlayerDamaged(GameObject player, int amount) {
@@ -28,11 +27,6 @@ public class PlayerEvents : MonoBehaviour {
     public static void GravityToggled() {
         if(gravityToggled != null)
             gravityToggled();
-    }
-
-    public static void PickedUpObject(GameObject pickup) {
-        if(pickedUpObject != null)
-            pickedUpObject(pickup);
     }
 
     public static void DisplayPrompt(string text, int duration) {

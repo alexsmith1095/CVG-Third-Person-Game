@@ -19,7 +19,7 @@ public class Pedestal : MonoBehaviour {
 			// If player has the gem
             if (hasPlayer && gem.collected) {
                 if (XCI.GetNumPluggedCtrlrs() > 0)
-                    PlayerEvents.DisplayPrompt("Press X to Place Object", 100);
+                    PlayerEvents.DisplayPrompt("Press Y to Place Object", 100);
                 else
                     PlayerEvents.DisplayPrompt("Press E to Place Object", 100);
             }
@@ -28,7 +28,7 @@ public class Pedestal : MonoBehaviour {
             if (gem.transform.parent.name == "Pedestal1" && name == "Pedestal1" ||
 				gem.transform.parent.name == "Pedestal2" && name == "Pedestal2") {
 				if (XCI.GetNumPluggedCtrlrs() > 0)
-                    PlayerEvents.DisplayPrompt("Press X to Pick Up", 100);
+                    PlayerEvents.DisplayPrompt("Press Y to Pick Up", 100);
                 else
                     PlayerEvents.DisplayPrompt("Press E to Pick Up", 100);
             }

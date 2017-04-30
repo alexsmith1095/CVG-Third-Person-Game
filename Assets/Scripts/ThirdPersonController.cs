@@ -20,7 +20,7 @@ public class ThirdPersonController : MonoBehaviour {
     private Camera camera;
     private bool playingIntro;
 
-    void OnEnable() {
+    void OnEnable () {
         moveDirection = Vector3.zero;
     }
 
@@ -29,7 +29,7 @@ public class ThirdPersonController : MonoBehaviour {
         animator = GetComponent<Animator>();
         camera = Camera.main;
         StartCoroutine("Intro");
-	}
+    }
 
 	void Update () {
         if (!playingIntro)
@@ -49,8 +49,7 @@ public class ThirdPersonController : MonoBehaviour {
         cameraForward = Vector3.Scale(camera.transform.forward, new Vector3(1, 0, 1)).normalized;
         Vector3 lookDirection = new Vector3(moveDirection.x, 0, moveDirection.z);
 
-        if (controller.isGrounded)
-        {
+        if (controller.isGrounded) {
             moveDirection = movementInput.x * camera.transform.right + movementInput.z * cameraForward;
             moveDirection *= speed;
 
@@ -75,14 +74,8 @@ public class ThirdPersonController : MonoBehaviour {
         }
     }
 
-    void OnControllerColliderHit (ControllerColliderHit col) {
-        if(col.gameObject.tag == "BreakableTile")
-            col.gameObject.SendMessage("RecieveMessage", col.gameObject.GetInstanceID());
-    }
-
     IEnumerator Intro () {
         playingIntro = true;
-        // Player animation
         moveDirection = Vector3.forward;
         animator.SetFloat("Speed", .1f);
         yield return new WaitForSeconds(5);
@@ -91,6 +84,4 @@ public class ThirdPersonController : MonoBehaviour {
         door.position = new Vector3(door.position.x, door.position.y - 3f, door.position.z);
         playingIntro = false;
     }
-
-
 }

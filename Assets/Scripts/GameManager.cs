@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+        timeCount = 0;
+        deathCount = 0;
         deathScreen = GameObject.Find("DeathScreen");
         if (deathScreen != null)
             deathScreen.SetActive(false);
@@ -42,11 +44,22 @@ public class GameManager : MonoBehaviour {
     }
 
     private int playerHealth = 5;
+    public static int deathCount = 0;
+    public static float timeCount = 0;
     public static bool gravityReversed = false;
     public GameObject deathScreen;
 
     public void DoNothing() {
         // just used to execute the script
+    }
+
+    void Update () {
+        timeCount += Time.deltaTime;
+        Debug.Log("Time: " + timeCount + " Deaths: " + deathCount);
+    }
+
+    void ToggleGravity() {
+        gravityReversed = !gravityReversed;
     }
 
     void DamagePlayer(GameObject player, int amount) {
@@ -56,10 +69,6 @@ public class GameManager : MonoBehaviour {
             GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().enabled = false;
             PlayerEvents.PlayerDead(player, 5);
         }
-    }
-
-    void ToggleGravity() {
-        gravityReversed = !gravityReversed;
     }
 
     void RespawnPlayer(GameObject player, int amount) {

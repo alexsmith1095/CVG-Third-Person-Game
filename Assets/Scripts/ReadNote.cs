@@ -6,29 +6,21 @@ using XboxCtrlrInput;
 
 public class ReadNote : MonoBehaviour {
 
-	void Awake() {
-        PlayerEvents.pickedUpObject += AddNoteToInventory;
-		GetComponent<Image>().enabled = false;
+    public Image noteImage;
+
+	void Start () {
+		noteImage.enabled = false;
     }
 
-	void AddNoteToInventory(GameObject pickup) {
-		// Find a UI version of the sprite picked up
-		GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/" + pickup.name + "UI");
-	}
-
 	void Update() {
-		if(Input.GetKeyDown(KeyCode.N) || XCI.GetDPadDown(XboxDPad.Up)) {
-			if(GetComponent<Image>().sprite != null)
-				GetComponent<Image>().enabled = !GetComponent<Image>().enabled;
+		if (Input.GetKeyDown(KeyCode.N) || XCI.GetDPadDown(XboxDPad.Up)) {
+			noteImage.enabled = !noteImage.enabled;
         }
 
-		if (XCI.GetNumPluggedCtrlrs() > 0) {
-			if (GetComponent<Image>().enabled && XCI.GetButtonDown(XboxButton.B)) {
-				GetComponent<Image>().enabled = false;
+		if (GetComponent<Image>().enabled) {
+			if (!noteImage.enabled && Input.GetKeyDown(KeyCode.Return) || XCI.GetButtonDown(XboxButton.B)) {
+				noteImage.enabled = false;
 			}
-        } else {
-            if (Input.GetKeyDown(KeyCode.Return))
-				GetComponent<Image>().enabled = false;
 		}
 	}
 }
