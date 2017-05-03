@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
+using UnityEngine.SceneManagement;
 
 /// <Summary>
 /// Attach this script to each object you want to be rotated.

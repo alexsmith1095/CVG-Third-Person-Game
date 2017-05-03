@@ -18,15 +18,15 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void OnEnable() {
+    void OnEnable () {
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    void OnDisable() {
+    void OnDisable () {
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+    private void OnSceneLoaded (Scene scene, LoadSceneMode mode) {
         timeCount = 0;
         deathCount = 0;
         deathScreen = GameObject.Find("DeathScreen");
@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour {
             deathScreen.SetActive(false);
     }
 
-	void Awake() {
+	void Awake () {
         _main = this;
         DontDestroyOnLoad(this);
         // Subscribe to player events
@@ -49,20 +49,19 @@ public class GameManager : MonoBehaviour {
     public static bool gravityReversed = false;
     public GameObject deathScreen;
 
-    public void DoNothing() {
+    public void DoNothing () {
         // just used to execute the script
     }
 
     void Update () {
         timeCount += Time.deltaTime;
-        Debug.Log("Time: " + timeCount + " Deaths: " + deathCount);
     }
 
-    void ToggleGravity() {
+    void ToggleGravity () {
         gravityReversed = !gravityReversed;
     }
 
-    void DamagePlayer(GameObject player, int amount) {
+    void DamagePlayer (GameObject player, int amount) {
         playerHealth -= amount;
         if (playerHealth <= 0 ) {
             deathScreen.SetActive(true);
@@ -71,11 +70,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    void RespawnPlayer(GameObject player, int amount) {
+    void RespawnPlayer (GameObject player, int amount) {
         StartCoroutine(RespawnPlayerCoroutine(player, amount));
     }
 
-    public IEnumerator RespawnPlayerCoroutine(GameObject player, int amount) {
+    public IEnumerator RespawnPlayerCoroutine (GameObject player, int amount) {
         player.transform.position = Checkpoint.GetCurrentCheckpoint();
         playerHealth = amount;
         yield return new WaitForSeconds(1);

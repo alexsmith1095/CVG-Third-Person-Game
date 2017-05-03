@@ -14,6 +14,13 @@ public class PlayerEvents : MonoBehaviour {
     public static event GravityHandler gravityToggled;
     public static event PromptHandler displayPrompt;
 
+    public static void Nullify () {
+        playerDamaged = null;
+        playerDead = null;
+        gravityToggled = null;
+        displayPrompt = null;
+    }
+
     public static void PlayerDamaged(GameObject player, int amount) {
         if(playerDamaged != null)
             playerDamaged(player, amount);

@@ -39,7 +39,7 @@ public class MenuFunctions : MonoBehaviour {
     }
 
 	public void Scene(int index){
-		SceneManager.LoadScene(index, LoadSceneMode.Single);
+        SceneManager.LoadScene(index, LoadSceneMode.Single);
     }
 
 	public void ShowControls () {

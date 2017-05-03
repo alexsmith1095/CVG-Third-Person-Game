@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class OnScreenPrompt : MonoBehaviour {
 
-	void Awake() {
-		PlayerEvents.displayPrompt += SetPromptText;
-	}
+	void OnEnable () {
+        PlayerEvents.displayPrompt += SetPromptText;
+    }
+
+    void OnDisable () {
+        PlayerEvents.displayPrompt -= SetPromptText;
+    }
 
 	void SetPromptText(string text, int duration) {
 		GetComponent<Text>().text = text;
