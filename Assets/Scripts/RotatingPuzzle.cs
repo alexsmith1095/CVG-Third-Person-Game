@@ -56,7 +56,7 @@ public class RotatingPuzzle : MonoBehaviour {
 		if (hasPlayer && (Input.GetKeyDown(KeyCode.E) || XCI.GetButtonDown(XboxButton.Y))) {
 			targetRotation.z = Increment(targetRotation.z);
 			// Check for solution
-			if(targetRotation.z == (float)solution) {
+			if (targetRotation.z == (float)solution) {
             	this.solved = true;
             } else {
 				this.solved = false;
@@ -70,7 +70,7 @@ public class RotatingPuzzle : MonoBehaviour {
 	/// <summary>
 	///	Increment the rotation axis by the specified amount.
 	/// </summary>
-	private float Increment(float axis) {
+	private float Increment (float axis) {
 		axis += rotationIncrement;
 		if(axis >= 360f) {
 			axis = 0;
@@ -87,18 +87,18 @@ public class RotatingPuzzle : MonoBehaviour {
 		int solvedCount = 0;
 
 		for (int i = 0; i < rotatingPuzzleItems.Length; i++) {
-			if(rotatingPuzzleItems[i].GetComponent<RotatingPuzzle>().solved == true) {
+			if (rotatingPuzzleItems[i].GetComponent<RotatingPuzzle>().solved == true) {
                 solvedCount++;
 			}
         }
 
-		if(solvedCount >= rotatingPuzzleItems.Length) {
+		if (solvedCount >= rotatingPuzzleItems.Length) {
             complete = true;
 		} else {
 			complete = false;
     	}
 
-		if(complete) {
+		if (complete) {
 			door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y + 10f, door.transform.position.z);
         } else {
 			door.transform.position = new Vector3(doorPosition.x, doorPosition.y, doorPosition.z);

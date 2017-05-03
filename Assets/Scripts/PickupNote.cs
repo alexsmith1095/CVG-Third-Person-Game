@@ -7,11 +7,13 @@ using XboxCtrlrInput;
 
 public class PickupNote : MonoBehaviour {
 
-	public GameObject noteUI;
+    public GameObject noteUI;
+    public GameObject noteIcon;
 
 	void Start () {
 		GetComponent<MeshRenderer>().enabled = false; // Ensure the text is hidden on load
-		noteUI.SetActive(false);
+        noteUI.SetActive(false);
+		noteIcon.SetActive(false);
     }
 
 	void FixedUpdate () {
@@ -34,7 +36,8 @@ public class PickupNote : MonoBehaviour {
 			if (Input.GetKeyDown(KeyCode.E) || XCI.GetButtonDown(XboxButton.Y)) {
                 // PlayerEvents.PickedUpObject(transform.parent.gameObject);
 				transform.parent.gameObject.SetActive(false);
-				noteUI.SetActive(true);
+                noteUI.SetActive(true);
+				noteIcon.SetActive(true);
 
 				if (XCI.GetNumPluggedCtrlrs() > 0) {
 					PlayerEvents.DisplayPrompt("Press Up on D-Pad to read Note", 8);

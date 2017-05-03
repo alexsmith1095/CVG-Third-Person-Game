@@ -10,8 +10,8 @@ public class ThirdPersonCamera : MonoBehaviour {
     private float maxDistance = 6f;
     private float x = 0.0f;
     private float y = 0.0f;
-    private float xSpeed = 30f;
-    private float ySpeed = 45f;
+    private float xSpeed = 50f;
+    private float ySpeed = 70f;
     private bool playingIntro;
 
 	void Start () {
