@@ -13,9 +13,10 @@ public class Gem : MonoBehaviour {
     public bool collected;
     public GameObject invertedBridge;
     public GameObject normalBridge;
+    public GameObject gemIcon;
 
     private MeshRenderer meshRenderer;
-    private new Light light;
+    private Light light;
     private Vector3 skullPos;
 
     void Start () {
@@ -26,6 +27,7 @@ public class Gem : MonoBehaviour {
         fallingEmission.enabled = false;
         invertedBridge.SetActive(true);
         normalBridge.SetActive(false);
+        gemIcon.SetActive(false);
     }
 
     void Update () {
@@ -39,6 +41,7 @@ public class Gem : MonoBehaviour {
                     transform.localPosition = skullPos;
                     meshRenderer.enabled = true;
                     light.intensity = 2f;
+                    gemIcon.SetActive(false);
                     if (XCI.GetNumPluggedCtrlrs() > 0)
                         PlayerEvents.DisplayPrompt("Press Y to Pick Up", 100);
                     else
@@ -55,6 +58,7 @@ public class Gem : MonoBehaviour {
                     transform.localPosition = skullPos;
                     meshRenderer.enabled = true;
                     light.intensity = 2f;
+                    gemIcon.SetActive(false);
                     StartCoroutine ("GravityOff"); // Puzzle is solved
                     if (XCI.GetNumPluggedCtrlrs() > 0)
                         PlayerEvents.DisplayPrompt("Press Y to Pick Up", 100);
@@ -72,6 +76,7 @@ public class Gem : MonoBehaviour {
                     transform.localPosition = Vector3.zero;
                     meshRenderer.enabled = false;
                     light.intensity = .5f;
+                    gemIcon.SetActive(true);
                     if (XCI.GetNumPluggedCtrlrs() > 0)
                         PlayerEvents.DisplayPrompt("Press Y to Place Object", 100);
                     else
@@ -90,6 +95,7 @@ public class Gem : MonoBehaviour {
                     gravityTrigger.SetActive(true); // The puzzle is not solved
                     invertedBridge.SetActive(true);
                     normalBridge.SetActive(false);
+                    gemIcon.SetActive(true);
                     var emission = particles.emission;
                     emission.enabled = true;
                     if (XCI.GetNumPluggedCtrlrs() > 0)

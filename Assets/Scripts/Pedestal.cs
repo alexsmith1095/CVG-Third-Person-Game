@@ -9,7 +9,7 @@ public class Pedestal : MonoBehaviour {
     private Gem gem;
 
 	void Start () {
-		gem = GameObject.Find("Gem").GetComponent<Gem>();
+        gem = GameObject.Find("Gem").GetComponent<Gem>();
 	}
 
 	void OnTriggerEnter (Collider col) {

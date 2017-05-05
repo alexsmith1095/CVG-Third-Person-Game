@@ -18,6 +18,7 @@ public class ThirdPersonController : MonoBehaviour {
     private CharacterController controller;
     private Animator animator;
     private Camera camera;
+    public static bool playingPanorama;
     private bool playingIntro;
 
     void OnEnable () {
@@ -28,6 +29,8 @@ public class ThirdPersonController : MonoBehaviour {
 		controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         camera = Camera.main;
+        // IntroPanorama panorama = GameObject.Find("Panorama").GetComponent<IntroPanorama>();
+        // panorama.StartCoroutine(panorama.Play(5));
         StartCoroutine("Intro");
     }
 
@@ -75,13 +78,15 @@ public class ThirdPersonController : MonoBehaviour {
     }
 
     IEnumerator Intro () {
+        // while(playingPanorama)
+        //     yield return new WaitForSeconds(0.1f);
         playingIntro = true;
-        moveDirection = Vector3.forward;
-        animator.SetFloat("Speed", .1f);
-        yield return new WaitForSeconds(5);
+        moveDirection = Vector3.forward * 1.2f;
+        animator.SetFloat("Speed", .2f);
+        yield return new WaitForSeconds(10);
         moveDirection = Vector3.zero;
         animator.SetFloat("Speed", 0f);
-        door.position = new Vector3(door.position.x, door.position.y - 3f, door.position.z);
+        door.position = new Vector3(door.position.x, door.position.y - 3.1f, door.position.z);
         playingIntro = false;
     }
 }

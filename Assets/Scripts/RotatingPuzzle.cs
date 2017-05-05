@@ -36,16 +36,18 @@ public class RotatingPuzzle : MonoBehaviour {
         Rotation();
 	}
 
-	void OnTriggerEnter() {
-        hasPlayer = true; // Player is inside trigger
+	void OnTriggerEnter (Collider col) {
+		if (col.tag == "Player")
+			hasPlayer = true; // Player is inside trigger
 		if(XCI.GetNumPluggedCtrlrs() > 0)
 			PlayerEvents.DisplayPrompt("Press Y to Rotate", 100);
 		else
 			PlayerEvents.DisplayPrompt("Press E to Rotate", 100);
 	}
 
-	void OnTriggerExit() {
-        hasPlayer = false; // Player has left the trigger
+	void OnTriggerExit (Collider col) {
+		if (col.tag == "Player")
+			hasPlayer = false; // Player has left the trigger
 		PlayerEvents.DisplayPrompt("", 100); // Remove the on-screen control prompt
     }
 
@@ -82,7 +84,7 @@ public class RotatingPuzzle : MonoBehaviour {
 	///	Check all the puzzle items in the scene for a solution.
 	/// If all have been solved, unlock the puzzle.
 	/// </summary>
-	void CheckForSolution() {
+	void CheckForSolution () {
 
 		int solvedCount = 0;
 

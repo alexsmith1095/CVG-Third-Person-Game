@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Killbox : MonoBehaviour {
 
-    private new GameObject camera;
+    private GameObject camera;
 
 	void Start () {
         camera = Camera.main.gameObject;
@@ -13,7 +13,7 @@ public class Killbox : MonoBehaviour {
 	void OnTriggerEnter (Collider col) {
 		if(col.tag == "Player") {
             camera.GetComponent<ThirdPersonCamera>().StartCoroutine("OnFall");
-            GameManager.deathCount += 1; 
+            GameManager.deathCount += 1;
 		}
 	}
 }

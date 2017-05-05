@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.SceneManagement;
+using XboxCtrlrInput;
 
 public class GameManager : MonoBehaviour {
 
@@ -30,8 +31,16 @@ public class GameManager : MonoBehaviour {
         timeCount = 0;
         deathCount = 0;
         deathScreen = GameObject.Find("DeathScreen");
-        if (deathScreen != null)
+        if (deathScreen != null) {
             deathScreen.SetActive(false);
+        }
+        if (XCI.GetNumPluggedCtrlrs() > 0) {
+            Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
+            Cursor.visible = false; // Hide the cursor
+        } else {
+            Cursor.lockState = CursorLockMode.None; // Unlock the cursor
+            Cursor.visible = true; // Show the cursor
+        }
     }
 
 	void Awake () {

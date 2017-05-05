@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TreasureChest : MonoBehaviour {
 
@@ -20,7 +21,7 @@ public class TreasureChest : MonoBehaviour {
 		}
 	}
 
-	void OnTriggerEnter(Collider col) {
+	void OnTriggerEnter (Collider col) {
 		if (col.tag == "Player") {
             hasPlayer = true;
             if(XCI.GetNumPluggedCtrlrs() > 0)
@@ -43,8 +44,11 @@ public class TreasureChest : MonoBehaviour {
         PlayerEvents.DisplayPrompt("1000G Achievement Unlocked! - Completed the game", 5);
         yield return new WaitForSeconds(2);
         scorePanel.SetActive(true);
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(4);
+        FadeOut.complete = true;
+        yield return new WaitForSeconds(4);
         scorePanel.SetActive(false);
+        FadeOut.complete = false;
 		SceneManager.LoadScene(0, LoadSceneMode.Single);
 	}
 }

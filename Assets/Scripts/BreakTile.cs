@@ -5,7 +5,7 @@ using UnityEngine;
 public class BreakTile : MonoBehaviour {
 
     public bool breakable = false;
-    new Rigidbody rigidbody;
+    Rigidbody rigidbody;
 
 	void Start() {
 		rigidbody = GetComponent<Rigidbody>();

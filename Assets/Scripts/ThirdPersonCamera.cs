@@ -15,7 +15,6 @@ public class ThirdPersonCamera : MonoBehaviour {
     private bool playingIntro;
 
 	void Start () {
-        //Cursor.lockState = CursorLockMode.Locked; // Hide the cursor
         target = GameObject.FindGameObjectWithTag("Player").transform;
         fallingTarget = GameObject.FindGameObjectWithTag("Player").transform;
         Vector3 angles = transform.eulerAngles;

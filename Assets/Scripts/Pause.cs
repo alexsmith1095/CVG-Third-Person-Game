@@ -10,8 +10,9 @@ public class Pause : MonoBehaviour {
 
 	void Start() {
         pausePanel = GameObject.Find("PausePanel");
-        pausePanel.SetActive(false);
+        // pausePanel.SetActive(false);
         StartCoroutine("Intro");
+        ResumeGame();
     }
 
     void Update() {
@@ -44,8 +45,8 @@ public class Pause : MonoBehaviour {
 
     public void ResumeGame() {
         Time.timeScale = 1;
-        //Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
-        //Cursor.visible = false; // Hide the cursor
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
+        Cursor.visible = false; // Hide the cursor
         pausePanel.SetActive(false);
         GameObject.FindGameObjectWithTag("Player").GetComponent<ThirdPersonController>().enabled = true;
         Camera.main.gameObject.GetComponent<ThirdPersonCamera>().enabled = true;
@@ -53,9 +54,9 @@ public class Pause : MonoBehaviour {
 
     IEnumerator Intro () {
         playingIntro = true;
-        // Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
-        // Cursor.visible = false; // Hide the cursor
-        yield return new WaitForSeconds (5);
+        Cursor.lockState = CursorLockMode.Locked; // Lock the cursor
+        Cursor.visible = false; // Hide the cursor
+        yield return new WaitForSeconds (10);
         playingIntro = false;
     }
 }
