@@ -18,8 +18,9 @@ public class ThirdPersonController : MonoBehaviour {
     private CharacterController controller;
     private Animator animator;
     private Camera camera;
-    public static bool playingPanorama;
-    private bool playingIntro;
+	public GameObject contextIntroPanel;
+    public static bool playingContextIntro; // The text explaining the games context
+    private bool playingIntro; // The player animation walking into the cave
 
     void OnEnable () {
         moveDirection = Vector3.zero;
@@ -29,8 +30,7 @@ public class ThirdPersonController : MonoBehaviour {
 		controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
         camera = Camera.main;
-        // IntroPanorama panorama = GameObject.Find("Panorama").GetComponent<IntroPanorama>();
-        // panorama.StartCoroutine(panorama.Play(5));
+		StartCoroutine ("ContextIntro");
         StartCoroutine("Intro");
     }
 
@@ -59,8 +59,9 @@ public class ThirdPersonController : MonoBehaviour {
             // Animation
             animator.SetFloat("Speed", moveDirection.magnitude / 10);
 
-            if (Input.GetButton("Jump") || XCI.GetButton(XboxButton.A))
-                moveDirection.y = jumpForce;
+			if (Input.GetButton ("Jump") || XCI.GetButton (XboxButton.A)) {
+				moveDirection.y = jumpForce;
+			}
 
         } else {
             // If !grounded we don't want the Y velocity to be recalculated
@@ -77,16 +78,28 @@ public class ThirdPersonController : MonoBehaviour {
         }
     }
 
+	// Display a paragraph of text introducing the game for a few seconds
+	IEnumerator ContextIntro () {
+		playingContextIntro = true;
+		contextIntroPanel.SetActive (true);
+		yield return new WaitForSeconds (10);
+		contextIntroPanel.SetActive (false);
+		playingContextIntro = false;
+		yield break;
+	}
+
+	// Animate the character walking into the cave and disable player controls
     IEnumerator Intro () {
-        // while(playingPanorama)
-        //     yield return new WaitForSeconds(0.1f);
+        while(playingContextIntro)
+             yield return new WaitForSeconds(0.1f); // Pause the coroutine until weve read the context intro
         playingIntro = true;
         moveDirection = Vector3.forward * 1.2f;
-        animator.SetFloat("Speed", .2f);
+        animator.SetFloat("Speed", .2f); // Make the player walk forward
         yield return new WaitForSeconds(10);
         moveDirection = Vector3.zero;
-        animator.SetFloat("Speed", 0f);
+        animator.SetFloat("Speed", 0f); // Stop Walking
         door.position = new Vector3(door.position.x, door.position.y - 3.1f, door.position.z);
         playingIntro = false;
+		yield break;
     }
 }

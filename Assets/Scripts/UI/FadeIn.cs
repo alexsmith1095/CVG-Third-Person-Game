@@ -8,7 +8,9 @@ public class FadeIn : MonoBehaviour {
     public Texture blackTexture;
 
 	void Update () {
-		alphaFadeValue -= Mathf.Clamp01(Time.deltaTime / 3);
+		if (alphaFadeValue > 0) {
+			alphaFadeValue -= Mathf.Clamp01(Time.deltaTime / 3);
+		}
 	}
 
 	void OnGUI () {

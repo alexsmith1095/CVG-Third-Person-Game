@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class TreasureChest : MonoBehaviour {
 
     public GameObject scorePanel;
+	public AudioClip sound;
     private bool hasPlayer;
     private bool complete;
 
@@ -40,7 +41,8 @@ public class TreasureChest : MonoBehaviour {
 	}
 
 	IEnumerator CompleteGame () {
-        complete = true;
+		SoundManager.Main.Play (sound);
+		complete = true;
         PlayerEvents.DisplayPrompt("1000G Achievement Unlocked! - Completed the game", 5);
         yield return new WaitForSeconds(2);
         scorePanel.SetActive(true);

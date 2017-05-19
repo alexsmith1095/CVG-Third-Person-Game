@@ -14,6 +14,8 @@ public class RotatingPuzzle : MonoBehaviour {
     public Solution solution;
     public float rotSpeed = 6f;
     public float rotationIncrement = 90f;
+	public AudioClip turnSound;
+	public AudioClip completeSound;
 
     private bool hasPlayer = false; // Is the player in range
     private Vector3 targetRotation; // Euler that we want to rotate to
@@ -74,6 +76,7 @@ public class RotatingPuzzle : MonoBehaviour {
 	/// </summary>
 	private float Increment (float axis) {
 		axis += rotationIncrement;
+		SoundManager.Main.Play (turnSound);
 		if(axis >= 360f) {
 			axis = 0;
         }
@@ -93,15 +96,17 @@ public class RotatingPuzzle : MonoBehaviour {
                 solvedCount++;
 			}
         }
-
+		// If the number of solved matches the total number
 		if (solvedCount >= rotatingPuzzleItems.Length) {
             complete = true;
 		} else {
 			complete = false;
     	}
 
+		// Once complete, open the door
 		if (complete) {
 			door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y + 10f, door.transform.position.z);
+			SoundManager.Main.Play (completeSound);
         } else {
 			door.transform.position = new Vector3(doorPosition.x, doorPosition.y, doorPosition.z);
 		}

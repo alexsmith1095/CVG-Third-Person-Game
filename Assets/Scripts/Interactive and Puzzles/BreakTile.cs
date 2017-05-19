@@ -5,13 +5,15 @@ using UnityEngine;
 public class BreakTile : MonoBehaviour {
 
     public bool breakable = false;
-    Rigidbody rigidbody;
+	public AudioClip collapseSound;
+	Rigidbody rigidbody;
 
 	void Start() {
 		rigidbody = GetComponent<Rigidbody>();
     }
 
 	void Collapse() {
+		SoundManager.Main.Play (collapseSound);
         rigidbody.isKinematic = false;
 		rigidbody.AddForce(0, -20f, 0, ForceMode.Impulse);
     }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using XboxCtrlrInput;
-
+/// <summary>
+/// This checks whether the player is near the gem and if they pick it up or place it in the skull pedestal
+/// </summary>
 public class Gem : MonoBehaviour {
 
     public Pedestal skull1;
@@ -14,6 +16,8 @@ public class Gem : MonoBehaviour {
     public GameObject invertedBridge;
     public GameObject normalBridge;
     public GameObject gemIcon;
+	public AudioClip interactionSound;
+	public AudioClip completeSound;
 
     private MeshRenderer meshRenderer;
     private Light light;
@@ -41,6 +45,7 @@ public class Gem : MonoBehaviour {
                     transform.localPosition = skullPos;
                     meshRenderer.enabled = true;
                     light.intensity = 2f;
+					SoundManager.Main.Play (interactionSound);
                     gemIcon.SetActive(false);
                     if (XCI.GetNumPluggedCtrlrs() > 0)
                         PlayerEvents.DisplayPrompt("Press Y to Pick Up", 100);
@@ -59,6 +64,7 @@ public class Gem : MonoBehaviour {
                     meshRenderer.enabled = true;
                     light.intensity = 2f;
                     gemIcon.SetActive(false);
+					SoundManager.Main.Play (interactionSound);
                     StartCoroutine ("GravityOff"); // Puzzle is solved
                     if (XCI.GetNumPluggedCtrlrs() > 0)
                         PlayerEvents.DisplayPrompt("Press Y to Pick Up", 100);
@@ -76,6 +82,7 @@ public class Gem : MonoBehaviour {
                     transform.localPosition = Vector3.zero;
                     meshRenderer.enabled = false;
                     light.intensity = .5f;
+					SoundManager.Main.Play (interactionSound);
                     gemIcon.SetActive(true);
                     if (XCI.GetNumPluggedCtrlrs() > 0)
                         PlayerEvents.DisplayPrompt("Press Y to Place Object", 100);
@@ -96,6 +103,7 @@ public class Gem : MonoBehaviour {
                     invertedBridge.SetActive(true);
                     normalBridge.SetActive(false);
                     gemIcon.SetActive(true);
+					SoundManager.Main.Play (interactionSound);
                     var emission = particles.emission;
                     emission.enabled = true;
                     if (XCI.GetNumPluggedCtrlrs() > 0)
@@ -112,6 +120,7 @@ public class Gem : MonoBehaviour {
         var emission = particles.emission;
         var fallingEmission = fallingParticles.emission;
         var pGravity = particles.main.gravityModifier;
+		SoundManager.Main.Play (completeSound);
         // Swap the bridge states
         invertedBridge.SetActive(false);
         normalBridge.SetActive(true);

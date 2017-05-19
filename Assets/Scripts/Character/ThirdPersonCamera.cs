@@ -20,7 +20,7 @@ public class ThirdPersonCamera : MonoBehaviour {
         Vector3 angles = transform.eulerAngles;
         x = angles.x;
         y = angles.y;
-        StartCoroutine("Intro");
+        StartCoroutine("Intro"); // Dont allow the player to move until the intro has finished playing
     }
 
 	void LateUpdate () {
@@ -67,6 +67,7 @@ public class ThirdPersonCamera : MonoBehaviour {
         }
     }
 
+    // This checks if something is between the character and the camera and adjusts the distance accordingly
     private void WallCollisions(Vector3 fromPlayer, ref Vector3 toCamera) {
 
         Debug.DrawLine(fromPlayer, toCamera, Color.cyan);
@@ -84,17 +85,18 @@ public class ThirdPersonCamera : MonoBehaviour {
         }
     }
 
+    // This stops the camera following the character when they fall to their death
     public IEnumerator OnFall() {
         target = null;
-        transform.LookAt(fallingTarget);
+        transform.LookAt(fallingTarget); // Watch the character fall
         yield return new WaitForSeconds(2);
-        PlayerEvents.PlayerDamaged(fallingTarget.gameObject, 5);
+        PlayerEvents.PlayerDamaged(fallingTarget.gameObject, 5); // Trigger player damaged event
         target = fallingTarget;
     }
 
     IEnumerator Intro () {
         playingIntro = true;
-        yield return new WaitForSeconds(3);
-        playingIntro = false;
+        yield return new WaitForSeconds(15);
+        playingIntro = false; // Enable player movement
     }
 }
